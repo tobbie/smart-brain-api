@@ -14,7 +14,7 @@ const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 
 const db = knex({
-  client: 'pg',
+  client: 'postgres',
   connection: process.env.POSTGRES_URI
 
 });
@@ -25,7 +25,7 @@ app.use(morgan("combined"));
 app.use(cors())
 app.use(bodyParser.json());
 
-app.get('/', (req, res)=> { res.send(db.users) })
+app.get('/', (req, res)=> { res.send("Working") })
 app.post('/signin', signin.handleSignin(db, bcrypt))
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) })
 app.get('/profile/:id', (req, res) => { profile.handleProfileGet(req, res, db)})
@@ -34,5 +34,6 @@ app.post('/imageurl', (req, res) => { image.handleApiCall(req, res)})
 
 app.listen(3000, ()=> {
   console.log('app is running on port 3000');
-  
+
+
 })

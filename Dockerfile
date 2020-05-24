@@ -1,4 +1,4 @@
-FROM node:10.20.1
+FROM node:12.16.3
 
 WORKDIR /usr/src/smart-brain-api
 
